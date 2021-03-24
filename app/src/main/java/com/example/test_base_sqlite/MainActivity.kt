@@ -13,9 +13,11 @@ class MainActivity : AppCompatActivity() {
         var btn = findViewById<Button>(R.id.btn)
         val et1 = findViewById<EditText>(R.id.et1)
         val et2 = findViewById<EditText>(R.id.et2)
-
+        var compteur = 0
         btn.setOnClickListener {
-            DataBaseHandler(this).insertData(User(et1.text.toString(), et2.text.toString().toInt()))
+            compteur ++
+            var bdd = DataBaseHandler(this, "test"+compteur.toString())
+            bdd.insertData(User(et1.text.toString(), et2.text.toString().toInt()))
         }
     }
 }
